@@ -111,6 +111,20 @@ label.invalid {
   color: #f87171;
 }
 
+.enter {
+  color: #f87171;
+  margin-top: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.enter-valid {
+  color: #f87171;
+  margin-top: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
 input.invalid {
   color: #ef4444;
   border-color: #f73f3f;

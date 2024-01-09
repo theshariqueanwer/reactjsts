@@ -17,6 +17,11 @@ export default function AuthInputs() {
     setSubmitted(true);
   }
 
+  const enterEmail = <p className='enter' >plese enter the email</p>
+  const enterValidEmail = <p className='enter-valid' >plese enter the valid email</p>
+  const enterPassword = <p className='enter' >plese enter the password</p>
+  const enterValidPassword = <p className='enter-valid' >plese enter the valid password</p>
+
   const emailNotValid = submitted && !enteredEmail.includes('@');
   const passwordNotValid = submitted && enteredPassword.trim().length < 6;
 
@@ -31,6 +36,8 @@ export default function AuthInputs() {
             onChange={(event) => handleInputChange('email', event.target.value)}
           />
         </p>
+        { !enteredEmail && submitted ? enterEmail : undefined }
+        { enteredEmail && emailNotValid ? enterValidEmail : undefined }
         <p>
           <label>Password</label>
           <input
@@ -41,8 +48,9 @@ export default function AuthInputs() {
             }
           />
         </p>
+        { !enteredPassword  && submitted ? enterPassword : undefined }
+        { enteredPassword && passwordNotValid ? enterValidPassword : undefined }
       </div>
-      <p>just as a some demo text</p>
       <div className="actions">
         <button type="button" className="text-button">
           Create a new account
