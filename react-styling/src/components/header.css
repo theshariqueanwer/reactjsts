@@ -25,9 +25,16 @@ header h1 {
     margin: 0;
 }
 
-header p {
+/* header p {
     text-align: center;
     color: #a39191;
+    margin: 0;
+} */
+
+p {
+    text-align: center;
+    /* color: #a39191; */
+    color: red;
     margin: 0;
 }
 
