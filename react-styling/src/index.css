@@ -107,12 +107,37 @@ header p {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
+p.invalid {
+  color: #f87171;
+}
+
 label.invalid {
   color: #f87171;
 }
 
+input.invalid {
+  color: #ef4444;
+  border-color: #f73f3f;
+  background-color: #fed2d2;
+}
+
+p.valid {
+  color: green;
+}
+
+label.valid {
+  color: green;
+}
+
+input.valid {
+  color: #30ec0b;
+  border-color: #2bec04;
+  background-color: #30ca5e;
+}
+
 .enter {
-  color: #f87171;
+  color: #af0c0c;
+  background-color: #f87171;
   margin-top: 0.5rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -120,15 +145,10 @@ label.invalid {
 
 .enter-valid {
   color: #f87171;
+  background-color: #ffe0e0;
   margin-top: 0.5rem;
   font-weight: 700;
   letter-spacing: 0.1em;
-}
-
-input.invalid {
-  color: #ef4444;
-  border-color: #f73f3f;
-  background-color: #fed2d2;
 }
 
 .actions {

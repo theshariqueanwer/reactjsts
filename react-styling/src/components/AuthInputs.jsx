@@ -25,6 +25,9 @@ export default function AuthInputs() {
   const emailNotValid = submitted && !enteredEmail.includes('@');
   const passwordNotValid = submitted && enteredPassword.trim().length < 6;
 
+  const emailValid = enteredEmail.includes('.com');
+  const passwordValid = enteredPassword.trim().length > 6 && enteredPassword.trim().length <= 12;
+
   return (
     <div id="auth-inputs">
       <div className="controls">
@@ -32,7 +35,11 @@ export default function AuthInputs() {
           <label>Email</label>
           <input
             type="email"
-            className={emailNotValid ? 'invalid' : undefined}
+            style={{
+              backgroundColor: emailNotValid ? '#f87171' : '#d1d5db',
+            }}
+            // className={emailNotValid ? 'invalid' : undefined}
+            className={ emailValid ? 'valid' : undefined }
             onChange={(event) => handleInputChange('email', event.target.value)}
           />
         </p>
@@ -42,7 +49,11 @@ export default function AuthInputs() {
           <label>Password</label>
           <input
             type="password"
-            className={passwordNotValid ? 'invalid' : undefined}
+            style={{
+              backgroundColor: passwordNotValid ? '#f87171' : '#d1d5db',
+            }}
+            // className={passwordNotValid ? 'invalid' : undefined}
+            className={ passwordValid ? 'valid' : undefined }
             onChange={(event) =>
               handleInputChange('password', event.target.value)
             }
