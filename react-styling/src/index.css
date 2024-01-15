@@ -111,28 +111,32 @@ p.invalid {
   color: #f87171;
 }
 
-label.invalid {
-  color: #f87171;
-}
-
-input.invalid {
-  color: #ef4444;
-  border-color: #f73f3f;
-  background-color: #fed2d2;
-}
-
 p.valid {
   color: green;
+}
+
+.label.invalid {
+  color: #f87171;
 }
 
 label.valid {
   color: green;
 }
 
+input.invalid {
+  color: #ef4444;
+  border-color: #f73f3f;
+  background-color: #f87171;
+}
+
+input.entering {
+  background-color: #fed2d2;
+}
+
 input.valid {
   color: #30ec0b;
   border-color: #2bec04;
-  background-color: #30ca5e;
+  background-color: #ffe0e0;
 }
 
 .enter {
@@ -143,7 +147,7 @@ input.valid {
   letter-spacing: 0.1em;
 }
 
-.enter-valid {
+.entering {
   color: #f87171;
   background-color: #ffe0e0;
   margin-top: 0.5rem;

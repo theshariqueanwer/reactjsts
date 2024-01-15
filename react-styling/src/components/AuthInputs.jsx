@@ -18,9 +18,10 @@ export default function AuthInputs() {
   }
 
   const enterEmail = <p className='enter' >plese enter the email</p>
-  const enterValidEmail = <p className='enter-valid' >plese enter the valid email</p>
+  const enterValidEmail = <p className='entering' >plese enter the valid email</p>
+
   const enterPassword = <p className='enter' >plese enter the password</p>
-  const enterValidPassword = <p className='enter-valid' >plese enter the valid password</p>
+  const enterValidPassword = <p className='entering' >plese enter the valid password</p>
 
   const emailNotValid = submitted && !enteredEmail.includes('@');
   const passwordNotValid = submitted && enteredPassword.trim().length < 6;
@@ -32,28 +33,28 @@ export default function AuthInputs() {
     <div id="auth-inputs">
       <div className="controls">
         <p>
-          <label>Email</label>
+          <label className={` label ${ emailNotValid ? 'invalid' : undefined } ${ emailValid ? 'valid' : undefined } `} >Email</label>
           <input
             type="email"
-            style={{
-              backgroundColor: emailNotValid ? '#f87171' : '#d1d5db',
-            }}
+            // style={{
+            //   backgroundColor: emailNotValid ? '#f87171' : '#d1d5db',
+            // }}
             // className={emailNotValid ? 'invalid' : undefined}
-            className={ emailValid ? 'valid' : undefined }
+            className={` ${ emailNotValid ? 'invalid' : undefined } ${ enteredEmail ? 'entering' : undefined } ${ emailValid ? 'valid' : undefined } `}
             onChange={(event) => handleInputChange('email', event.target.value)}
           />
         </p>
         { !enteredEmail && submitted ? enterEmail : undefined }
         { enteredEmail && emailNotValid ? enterValidEmail : undefined }
         <p>
-          <label>Password</label>
+          <label className={` label ${ passwordNotValid ? 'invalid' : undefined } ${ passwordValid ? 'valid' : undefined } `} >Password</label>
           <input
             type="password"
-            style={{
-              backgroundColor: passwordNotValid ? '#f87171' : '#d1d5db',
-            }}
+            // style={{
+            //   backgroundColor: passwordNotValid ? '#f87171' : '#d1d5db',
+            // }}
             // className={passwordNotValid ? 'invalid' : undefined}
-            className={ passwordValid ? 'valid' : undefined }
+            className={` ${ passwordNotValid ? 'invalid' : undefined } ${ enteredPassword ? 'entering' : undefined } ${ passwordValid ? 'valid' : undefined } `}
             onChange={(event) =>
               handleInputChange('password', event.target.value)
             }
