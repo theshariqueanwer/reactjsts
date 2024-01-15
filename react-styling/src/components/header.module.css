@@ -31,11 +31,13 @@ header h1 {
     margin: 0;
 } */
 
-/* p {
+p {
     text-align: center;
-    color: #a39191;
+    background-color: skyblue;
+    /* color: #a39191; */
+    color: red;
     margin: 0;
-} */
+}
 
 .paragraph {
     text-align: center;
