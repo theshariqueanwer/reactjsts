@@ -120,7 +120,7 @@ p.valid {
 }
 
 label.valid {
-  color: green;
+  color: #10ca10;
 }
 
 input.invalid {
