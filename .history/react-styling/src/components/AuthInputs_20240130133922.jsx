@@ -45,8 +45,8 @@ export default function AuthInputs() {
   const passwordValid = enteredPassword.trim().length > 6 && enteredPassword.trim().length <= 12;
 
   return (
-    <div id="auth-inputs" className='w-full max-w-sm p-8 mx-auto rounded shadow-md bg-gradient-to-b from-stone-700 to-slate-800'>
-      <div className='flex flex-col gap-2 mb-6'>
+    <div id="auth-inputs">
+      <ControlContainer>
         <CustomLabelAndInput
           label="Email"
           type="email"
@@ -73,9 +73,9 @@ export default function AuthInputs() {
         />
         {!enteredPassword && submitted ? <Enter message="plese enter the password" /> : undefined}
         {enteredPassword && passwordNotValid ? <Entering message="plese enter the valid password" /> : undefined}
-      </div>
-      <div className="flex justify-end gap-4">
-        <button className="text-amber-400 hover:text-amber-500" type="button" onClick={handleRegister} >Create a new account</button>
+      </ControlContainer>
+      <div className="actions">
+        <button type="button" className="text-button" onClick={handleRegister} >Create a new account</button>
         {/* <button className='button' onClick={handleLogin}>Sign In</button> */}
         <Button onClick={handleLogin}>Sign In</Button>
       </div>

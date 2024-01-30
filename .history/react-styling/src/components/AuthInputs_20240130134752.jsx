@@ -74,8 +74,8 @@ export default function AuthInputs() {
         {!enteredPassword && submitted ? <Enter message="plese enter the password" /> : undefined}
         {enteredPassword && passwordNotValid ? <Entering message="plese enter the valid password" /> : undefined}
       </div>
-      <div className="flex justify-end gap-4">
-        <button className="text-amber-400 hover:text-amber-500" type="button" onClick={handleRegister} >Create a new account</button>
+      <div className="actions">
+        <button type="button" className="text-button" onClick={handleRegister} >Create a new account</button>
         {/* <button className='button' onClick={handleLogin}>Sign In</button> */}
         <Button onClick={handleLogin}>Sign In</Button>
       </div>

@@ -5,6 +5,7 @@ import CustomeLabelAndInput from './LabelAndInput';
 import Enter from './Enter';
 import Entering from './Entering';
 import AuthInputs from './AuthInputs';
+// import { useNavigate } from "react-router-dom"
 
 const ControlContainer = styled.div`
   display: flex;
@@ -21,6 +22,7 @@ export default function CreateInputs() {
   const [enteredPassword, setEnteredPassword] = useState('');
   const [enteredConfirmPassword, setEnteredConfirmPassword] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  // const navigate = useNavigate();
 
   function handleInputChange(identifier, value) {
     if (identifier === 'full-name') {
@@ -43,7 +45,7 @@ export default function CreateInputs() {
   }
 
   function handleLogin() {
-    <AuthInputs />
+    // <AuthInputs />
   }
 
   const emailNotValid = submitted && !enteredEmail.includes('@');

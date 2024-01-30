@@ -1,19 +1,4 @@
-import {styled} from 'styled-components'
-
-const Button = styled.button`
-  padding: 1rem 2rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  border-radius: 0.25rem;
-  color: #1f2937;
-  background-color: #f0b322;
-  border-radius: 6px;
-  border: none;
-
-  &:hover {
-    background-color: #f0920e;
-  }
-
-`
-
+function Button({children, ...props}) {
+  return <button className="text-xl font-semibold uppercase rounded m-2 p-2 text-stone-900 bg-amber-400 hover:bg-amber-500"  {...props}>{children}</button>
+}
 export default Button
