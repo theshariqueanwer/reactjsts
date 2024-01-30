@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import {styled} from 'styled-components'
 import Button from './Button';
+import CustomeLabelAndInput from './LabelAndInput';
 import Enter from './Enter';
 import Entering from './Entering';
 import CreateInputs from './CreateInputs';
-import CustomLabelAndInput from './CustomLabelAndInput';
 // import { useNavigate } from "react-router-dom"
 
-// const ControlContainer = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 0.5rem;
-//   margin-bottom: 1.5rem;
-// `
+const ControlContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+`
 
-export default function AuthInputs() {
+export default function AuthInputsStyledComponents() {
   const [enteredEmail, setEnteredEmail] = useState('');
   const [enteredPassword, setEnteredPassword] = useState('');
   const [submitted, setSubmitted] = useState(false);
@@ -45,9 +45,9 @@ export default function AuthInputs() {
   const passwordValid = enteredPassword.trim().length > 6 && enteredPassword.trim().length <= 12;
 
   return (
-    <div id="auth-inputs" className='w-full max-w-sm p-8 mx-auto rounded shadow-md bg-gradient-to-b from-stone-700 to-slate-800'>
-      <div className='flex flex-col gap-2 mb-6'>
-        <CustomLabelAndInput
+    <div id="auth-inputs">
+      <ControlContainer>
+        <CustomeLabelAndInput
           label="Email"
           type="email"
           // style={{
@@ -60,7 +60,7 @@ export default function AuthInputs() {
         />
         {!enteredEmail && submitted ? <Enter message="plese enter the email" /> : undefined}
         {enteredEmail && emailNotValid ? <Entering message="plese enter the valid email" /> : undefined}
-        <CustomLabelAndInput
+        <CustomeLabelAndInput
           label="Password"
           type="password"
           // style={{
@@ -73,9 +73,9 @@ export default function AuthInputs() {
         />
         {!enteredPassword && submitted ? <Enter message="plese enter the password" /> : undefined}
         {enteredPassword && passwordNotValid ? <Entering message="plese enter the valid password" /> : undefined}
-      </div>
-      <div className="flex justify-end gap-4">
-        <button className="text-amber-400 hover:text-amber-500" type="button" onClick={handleRegister} >Create a new account</button>
+      </ControlContainer>
+      <div className="actions">
+        <button type="button" className="text-button" onClick={handleRegister} >Create a new account</button>
         {/* <button className='button' onClick={handleLogin}>Sign In</button> */}
         <Button onClick={handleLogin}>Sign In</Button>
       </div>
