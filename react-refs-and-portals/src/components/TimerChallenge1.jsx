@@ -4,7 +4,7 @@ import ResultModal from "./ResultModal";
 // let timer;   // here also this is not the solution
 // so we can make use of useRef
 
-export default function TimerChallenge({ title, targetTime }) {
+export default function TimerChallenge1({ title, targetTime }) {
   // let timer;   // here also this is not the solution
 
   const timer = useRef();
