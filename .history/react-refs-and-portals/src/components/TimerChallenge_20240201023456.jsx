@@ -10,7 +10,7 @@ export default function TimerChallenge({ title, targetTime }) {
 
   const timerIsActive = timeRemaining > 0 && timeRemaining < targetTime * 1000;
 
-  const resultScore = timeRemaining <= 0;
+  const resultScore = remainingTime <= 0;
 
   if(timeRemaining <= 0) {
     clearInterval(timer.current);
@@ -37,7 +37,7 @@ export default function TimerChallenge({ title, targetTime }) {
       <ResultModal targetTime={targetTime} remainingTime={timeRemaining} onReset={handleReset} ref={dialog} />
       <section className="challenge">
         <h2>{title}</h2>
-        {/* { resultScore ? <p>You Lost!</p> : <p>You Won!</p>} */}
+        { resultScore ? <p>You Lost!</p> : <p>You Won!</p>}
         <p className="challenge-time">
           {targetTime} second{targetTime > 1 ? "s" : ""}
         </p>

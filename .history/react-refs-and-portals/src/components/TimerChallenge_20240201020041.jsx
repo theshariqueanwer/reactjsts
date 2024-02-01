@@ -10,17 +10,6 @@ export default function TimerChallenge({ title, targetTime }) {
 
   const timerIsActive = timeRemaining > 0 && timeRemaining < targetTime * 1000;
 
-  const resultScore = timeRemaining <= 0;
-
-  if(timeRemaining <= 0) {
-    clearInterval(timer.current);
-    dialog.current.open();
-  }
-
-  function handleReset() {
-    setTimeRemaining(targetTime * 1000);
-  }
-
   function handleStart() {
     timer.current = setInterval(() => {
     setTimeRemaining(prevTimeRemaining => prevTimeRemaining - 10); 
@@ -29,27 +18,34 @@ export default function TimerChallenge({ title, targetTime }) {
 
   function handleStop() {
     clearInterval(timer.current);
-    dialog.current.open();
   }
 
   return (
     <>
-      <ResultModal targetTime={targetTime} remainingTime={timeRemaining} onReset={handleReset} ref={dialog} />
+
+      {/* {timerExpired && (
+        <ResultModal ref={dialog} result="Lost" targetTime={targetTime} />
+      )} */}
+      {/* <ResultModal ref={dialog} result="Lost" targetTime={targetTime} /> */}
+
+      <ResultModal result="Won!" targetTime={targetTime} ref={dialog} />
+
       <section className="challenge">
         <h2>{title}</h2>
-        {/* { resultScore ? <p>You Lost!</p> : <p>You Won!</p>} */}
+        {timerExpired && <p>You Lost!</p>}
         <p className="challenge-time">
           {targetTime} second{targetTime > 1 ? "s" : ""}
         </p>
         <p>
-          <button onClick={timerIsActive ? handleStop : handleStart}>
-            {timerIsActive ? "Stop" : "Start"} Challenge
+          <button onClick={timerStarted ? handleStop : handleStart}>
+            {timerStarted ? "Stop" : "Start"} Challenge
           </button>
         </p>
-        <p className={timerIsActive ? "active" : undefined}>
-          {timerIsActive ? "Time is Running..." : "Time is inactive"}
+        <p className={timerStarted ? "active" : undefined}>
+          {timerStarted ? "Time is Running..." : "Time is inactive"}
         </p>
       </section>
+
     </>
   );
 }

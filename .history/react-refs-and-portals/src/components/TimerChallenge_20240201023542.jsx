@@ -10,7 +10,7 @@ export default function TimerChallenge({ title, targetTime }) {
 
   const timerIsActive = timeRemaining > 0 && timeRemaining < targetTime * 1000;
 
-  const resultScore = timeRemaining <= 0;
+  const resultScore = remainingTime <= 0;
 
   if(timeRemaining <= 0) {
     clearInterval(timer.current);
