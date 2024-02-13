@@ -4,118 +4,137 @@ import Header from './components/Header.jsx';
 import Shop from './components/Shop.jsx';
 import { DUMMY_PRODUCTS } from './dummy-products.js';
 import Product from './components/Product.jsx';
-import CartContext from './context/shopping-cart-context.jsx';
+import {CartContext} from './context/shopping-cart-context.jsx';
+import CartContextProvider from './context/shopping-cart-context.jsx';
 
 function App() {
-  const [shoppingCart, setShoppingCart] = useState({
-    items: [],
-  });
 
-  function handleAddItemToCart(id) {
-    setShoppingCart((prevShoppingCart) => {
-      const updatedItems = [...prevShoppingCart.items];
+  // const [shoppingCart, setShoppingCart] = useState({
+  //   items: [],
+  // });
 
-      const existingCartItemIndex = updatedItems.findIndex(
-        (cartItem) => cartItem.id === id
-      );
-      const existingCartItem = updatedItems[existingCartItemIndex];
+  // function handleAddItemToCart(id) {
+  //   setShoppingCart((prevShoppingCart) => {
+  //     const updatedItems = [...prevShoppingCart.items];
 
-      if (existingCartItem) {
-        const updatedItem = {
-          ...existingCartItem,
-          quantity: existingCartItem.quantity + 1,
-        };
-        updatedItems[existingCartItemIndex] = updatedItem;
-      } else {
-        const product = DUMMY_PRODUCTS.find((product) => product.id === id);
-        updatedItems.push({
-          id: id,
-          name: product.title,
-          price: product.price,
-          quantity: 1,
-        });
-      }
+  //     const existingCartItemIndex = updatedItems.findIndex(
+  //       (cartItem) => cartItem.id === id
+  //     );
+  //     const existingCartItem = updatedItems[existingCartItemIndex];
 
-      return {
-        items: updatedItems,
-      };
-    });
-  }
+  //     if (existingCartItem) {
+  //       const updatedItem = {
+  //         ...existingCartItem,
+  //         quantity: existingCartItem.quantity + 1,
+  //       };
+  //       updatedItems[existingCartItemIndex] = updatedItem;
+  //     } else {
+  //       const product = DUMMY_PRODUCTS.find((product) => product.id === id);
+  //       updatedItems.push({
+  //         id: id,
+  //         name: product.title,
+  //         price: product.price,
+  //         quantity: 1,
+  //       });
+  //     }
 
-  function handleUpdateCartItemQuantity(productId, amount) {
-    setShoppingCart((prevShoppingCart) => {
-      const updatedItems = [...prevShoppingCart.items];
-      const updatedItemIndex = updatedItems.findIndex(
-        (item) => item.id === productId
-      );
+  //     return {
+  //       items: updatedItems,
+  //     };
+  //   });
+  // }
 
-      const updatedItem = {
-        ...updatedItems[updatedItemIndex],
-      };
+  // function handleUpdateCartItemQuantity(productId, amount) {
+  //   setShoppingCart((prevShoppingCart) => {
+  //     const updatedItems = [...prevShoppingCart.items];
+  //     const updatedItemIndex = updatedItems.findIndex(
+  //       (item) => item.id === productId
+  //     );
 
-      updatedItem.quantity += amount;
+  //     const updatedItem = {
+  //       ...updatedItems[updatedItemIndex],
+  //     };
 
-      if (updatedItem.quantity <= 0) {
-        updatedItems.splice(updatedItemIndex, 1);
-      } else {
-        updatedItems[updatedItemIndex] = updatedItem;
-      }
+  //     updatedItem.quantity += amount;
 
-      return {
-        items: updatedItems,
-      };
-    });
-  }
+  //     if (updatedItem.quantity <= 0) {
+  //       updatedItems.splice(updatedItemIndex, 1);
+  //     } else {
+  //       updatedItems[updatedItemIndex] = updatedItem;
+  //     }
 
-  const ctxValue = {
-    items: shoppingCart.items,
-    addItemToCart: handleAddItemToCart,
-    updateItemQuantity: handleUpdateCartItemQuantity
-  }
+  //     return {
+  //       items: updatedItems,
+  //     };
+  //   });
+  // }
+
+  // const ctxValue = {
+  //   items: shoppingCart.items,
+  //   addItemToCart: handleAddItemToCart,
+  //   updateItemQuantity: handleUpdateCartItemQuantity
+  // }
+
+  // ------------------------------------------------------------------------------
+
+  // return (
+  //   // <CartContext.Provider value={{ items: [] }}>
+  //   // <CartContext.Provider value={shoppingCart}>
+  //   <CartContext.Provider value={ctxValue}>
+
+  //     {/* <Header
+  //       cart={shoppingCart}
+  //       onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
+  //     /> */}
+
+  //     <Header />
+
+  //     <Shop onAddItemToCart={handleAddItemToCart} >
+  //     {/* <Shop> */}
+
+  //       {/* {DUMMY_PRODUCTS.map((product) => {
+  //         return (
+  //           <div key={product.id}>
+  //             <img src={product.image} alt={product.title} />
+  //             <h3>{product.title}</h3>
+  //             <p>${product.price}</p>
+  //             <button>Add to Cart</button>
+  //           </div>
+  //         );
+  //       })} */}
+
+  //       {/* {DUMMY_PRODUCTS.map((product) => (
+  //         <li key={product.id}>
+  //           <Product {...product} onAddToCart={onAddItemToCart} />
+  //           <Product {...product} onAddToCart={handleAddItemToCart} />
+  //         </li>
+  //       ))} */}
+
+  //       {DUMMY_PRODUCTS.map((product) => (
+  //         <li key={product.id}>
+  //           <Product {...product} />
+  //         </li>
+  //       ))}
+        
+  //     </Shop>
+
+  //   </CartContext.Provider>
+  // );
 
   return (
-    // <CartContext.Provider value={{ items: [] }}>
-    // <CartContext.Provider value={shoppingCart}>
-    <CartContext.Provider value={ctxValue}>
-
-      {/* <Header
-        cart={shoppingCart}
-        onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
-      /> */}
-
+    <CartContextProvider>
       <Header />
-
-      <Shop onAddItemToCart={handleAddItemToCart} >
-      {/* <Shop> */}
-
-        {/* {DUMMY_PRODUCTS.map((product) => {
-          return (
-            <div key={product.id}>
-              <img src={product.image} alt={product.title} />
-              <h3>{product.title}</h3>
-              <p>${product.price}</p>
-              <button>Add to Cart</button>
-            </div>
-          );
-        })} */}
-
-        {/* {DUMMY_PRODUCTS.map((product) => (
-          <li key={product.id}>
-            <Product {...product} onAddToCart={onAddItemToCart} />
-            <Product {...product} onAddToCart={handleAddItemToCart} />
-          </li>
-        ))} */}
-
+      <Shop>
         {DUMMY_PRODUCTS.map((product) => (
           <li key={product.id}>
             <Product {...product} />
           </li>
         ))}
-        
       </Shop>
-
-    </CartContext.Provider>
+    </CartContextProvider>
   );
+
+
 }
 
 export default App;

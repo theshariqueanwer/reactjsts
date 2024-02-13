@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import CartContext from "../context/shopping-cart-context";
+import {CartContext} from "../context/shopping-cart-context";
 
 // export default function Cart({ onUpdateItemQuantity }) {
 export default function Cart() {  
@@ -14,6 +14,23 @@ export default function Cart() {
     0
   );
   const formattedTotalPrice = `$${totalPrice.toFixed(2)}`;
+
+  // ---------------------------------------------------------------------------------------------------
+  // reduce function
+  // const numbers = [1, -1, 2, 3];
+
+  // const sum = numbers.reduce((accumulator, currentValue) => { 
+  //   return accumulator + currentValue
+  // }, 0);
+
+  // const sum2 = numbers.reduce(
+  //   (accumulator, currentValue) => accumulator + currentValue,
+  //   0
+  // );
+
+  // const value = numbers.reduce((accumulator, currentValue) => { accumulator.push(currentValue); return accumulator})
+//------------------------------------------------------------------------------------------------------
+
 
   return (
     // <CartContext.Consumer>
