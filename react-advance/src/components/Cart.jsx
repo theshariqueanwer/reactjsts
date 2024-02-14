@@ -28,6 +28,7 @@ export default function Cart() {
   //   0
   // );
 
+  // need to check 
   // const value = numbers.reduce((accumulator, currentValue) => { accumulator.push(currentValue); return accumulator})
 //------------------------------------------------------------------------------------------------------
 
