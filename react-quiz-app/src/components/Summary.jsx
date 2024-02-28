@@ -3,13 +3,14 @@ import quizCompleteImg from "../assets/quiz-complete.png";
 import QUESTIONS from "../questions.js";
 
 function Summary({ userAnswers }) {
+
     const skippedAnswers = userAnswers.filter(answer => answer === null);
     const correctAnswers = userAnswers.filter((answer, index) => answer === QUESTIONS[index].answers[0]);
-    const wrongAnswers = userAnswers.filter((answer, index) => answer !== QUESTIONS[index].answers[0]);
+    // const wrongAnswers = userAnswers.filter((answer, index) => answer !== QUESTIONS[index].answers[0]);
 
     const skippedAnswersShare = Math.round((skippedAnswers.length / userAnswers.length) * 100);
     const correctAnswersShare = Math.round((correctAnswers.length / userAnswers.length) * 100);
-    const wrongAnswersShare = Math.round((wrongAnswers.length / userAnswers.length) * 100);
+    // const wrongAnswersShare = Math.round((wrongAnswers.length / userAnswers.length) * 100);
     const incorrectAnswersShare = 100 - skippedAnswersShare - correctAnswersShare;
 
   return (

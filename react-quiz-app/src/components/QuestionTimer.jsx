@@ -23,11 +23,11 @@ function QuestionTimer({ timeout, OnTimeout, mode }) {
   }, [timeout, OnTimeout]);
 
   // This will lead to infinite interval so make use of useEffect
-//   setInterval(() => {
-//     setRemainingTime((prevRemainingTime) => {
-//         return prevRemainingTime - 100;
-//     });
-//   }, 100);
+  //   setInterval(() => {
+  //     setRemainingTime((prevRemainingTime) => {
+  //         return prevRemainingTime - 100;
+  //     });
+  //   }, 100);
 
   useEffect(() => {
     console.log("SETTING INTERVAL");
@@ -44,31 +44,30 @@ function QuestionTimer({ timeout, OnTimeout, mode }) {
 
     // in more shot way
     return () => clearInterval(interval);
-
   }, []);
 
-// This useEffect for demo purpose for understanding  
-//   useEffect(() => {
-//     const timeOut = setTimeout(() => {
-//       OnTimeout();
-//     }, timeout);
+  // This useEffect for demo purpose for understanding
+  //   useEffect(() => {
+  //     const timeOut = setTimeout(() => {
+  //       OnTimeout();
+  //     }, timeout);
 
-//     return () => {
-//       console.log("Cleaning up the timer");
-//       clearTimeout(timeOut);
-//     };
+  //     return () => {
+  //       console.log("Cleaning up the timer");
+  //       clearTimeout(timeOut);
+  //     };
 
-//     const interval = setInterval(() => {
-//       console.log("Interval");
-//       setRemainingTime((prevStateRemainingTime) => prevStateRemainingTime - 10);
-//     }, 10);
+  //     const interval = setInterval(() => {
+  //       console.log("Interval");
+  //       setRemainingTime((prevStateRemainingTime) => prevStateRemainingTime - 10);
+  //     }, 10);
 
-//     return () => {
-//       console.log("Cleaning up the timer interval");
-//       clearInterval(interval);
-//     };
+  //     return () => {
+  //       console.log("Cleaning up the timer interval");
+  //       clearInterval(interval);
+  //     };
 
-//   }, []);
+  //   }, []);
 
   return (
     <div>

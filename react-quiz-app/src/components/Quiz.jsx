@@ -7,13 +7,13 @@ import Summary from "./Summary.jsx";
 function Quiz() {
   // this ref also should be move to the Answers Component
   //   const shuffledAnswers = useRef();
-//   const [answerState, setAnswerState] = useState("");
+  //   const [answerState, setAnswerState] = useState("");
   const [userAnswers, setUserAnswers] = useState([]);
   // const [shuffledAnswerState, setShuffledAnswerState] = useState([]); // we do not to use and avoids
 
-    const activeQuestionIndex = userAnswers.length;
-//   const activeQuestionIndex =
-//     answerState === "" ? userAnswers.length : userAnswers.length - 1;
+  const activeQuestionIndex = userAnswers.length;
+  //   const activeQuestionIndex =
+  //     answerState === "" ? userAnswers.length : userAnswers.length - 1;
 
   // This two lines will go after the if block down there
   // const shuffledAnswers = [...QUESTIONS[activeQuestionIndex].answers];
@@ -28,23 +28,22 @@ function Quiz() {
 
   const handleSelectAnswer = useCallback(
     function handleSelectAnswer(selectedAnswer) {
-    //   setAnswerState("answered");
+      //   setAnswerState("answered");
       setUserAnswers((previousUserAnswer) => {
         return [...previousUserAnswer, selectedAnswer];
       });
 
-    //   setTimeout(() => {
-    //     if (selectedAnswer === QUESTIONS[activeQuestionIndex].answers[0]) {
-    //       setAnswerState("correct");
-    //     } else {
-    //       setAnswerState("wrong");
-    //     }
+      //   setTimeout(() => {
+      //     if (selectedAnswer === QUESTIONS[activeQuestionIndex].answers[0]) {
+      //       setAnswerState("correct");
+      //     } else {
+      //       setAnswerState("wrong");
+      //     }
 
-    //     setTimeout(() => {
-    //       setAnswerState("");
-    //     }, 2000);
-    //   }, 1000);
-
+      //     setTimeout(() => {
+      //       setAnswerState("");
+      //     }, 2000);
+      //   }, 1000);
     },
     // [activeQuestionIndex]
     []
@@ -56,7 +55,7 @@ function Quiz() {
   );
 
   if (quizIsComplete) {
-    return <Summary userAnswers={userAnswers} />
+    return <Summary userAnswers={userAnswers} />;
   }
 
   // This two line will come after the if block
@@ -152,7 +151,6 @@ function Quiz() {
         onSkipAnswer={handleSkipAnswer}
         onSelectAnswer={handleSelectAnswer}
       />
-
     </div>
   );
 }
