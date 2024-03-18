@@ -7,33 +7,77 @@ import logoImg from './assets/logo.png';
 import AvailablePlaces from './components/AvailablePlaces.jsx';
 import { fetchUserPlaces, updateUserPlaces } from './http.js';
 import Error from './components/Error.jsx';
+import { useFetch } from './hooks/useFetch.js';
+
+// function fetchData() {
+//   useEffect(() => {
+//     async function fetchPlaces() {
+//       setIsFetching(true);
+//       try {
+//         const places = await fetchUserPlaces();
+//         setUserPlaces(places);
+//       } catch (error) {
+//         setError({ message: error.message || 'Failed to fetch user places.' });
+//       }
+
+//       setIsFetching(false);
+//     }
+
+//     fetchPlaces();
+//   }, []);
+// }
+// This above function will not execute because useEffect and useState are not directly inside the component function
+// So the above solution will not work for making the generic to reuse in the different components
+// so just revert back to the original and make use of the custom hook for this
 
 function App() {
   const selectedPlace = useRef();
 
-  const [userPlaces, setUserPlaces] = useState([]);
-  const [isFetching, setIsFetching] = useState(false);
-  const [error, setError] = useState();
+  // const [userPlaces, setUserPlaces] = useState([]);
+  // const [isFetching, setIsFetching] = useState(false);
+  // const [error, setError] = useState();
 
   const [errorUpdatingPlaces, setErrorUpdatingPlaces] = useState();
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  useEffect(() => {
-    async function fetchPlaces() {
-      setIsFetching(true);
-      try {
-        const places = await fetchUserPlaces();
-        setUserPlaces(places);
-      } catch (error) {
-        setError({ message: error.message || 'Failed to fetch user places.' });
-      }
+  // useEffect(() => {
+  //   async function fetchPlaces() {
+  //     setIsFetching(true);
+  //     try {
+  //       const places = await fetchUserPlaces();
+  //       setUserPlaces(places);
+  //     } catch (error) {
+  //       setError({ message: error.message || 'Failed to fetch user places.' });
+  //     }
 
-      setIsFetching(false);
-    }
+  //     setIsFetching(false);
+  //   }
 
-    fetchPlaces();
-  }, []);
+  //   fetchPlaces();
+  // }, []);
+
+  // fetchData();
+
+  // const [isFetching, error, fetchedData] = useFetch(fetchUserPlaces, "Failed to fetch user places");
+  // const [isFetching, error, fetchedData: userPlaces] = useFetch(fetchUserPlaces, "Failed to fetch user places");
+
+  // const {isFetching, error, fetchedData} = useFetch(fetchUserPlaces, "Failed to fetch user places");
+  // const {isFetching, error, fetchedData: userPlaces} = useFetch(fetchUserPlaces, "Failed to fetch user places", []);
+  
+  // const [isFetching, error, { fetchedData: userPlaces } ] = useFetch(
+  //   fetchUserPlaces,
+  //   [],
+  //   "Failed to fetch user places"
+  // );
+  // not working the above because of the alias name
+
+  const {
+    isFetching,
+    error,
+    fetchedData: userPlaces,
+    setFetchedData: setUserPlaces
+  } = useFetch(fetchUserPlaces, [], "Failed to fetch user places");
 
   function handleStartRemovePlace(place) {
     setModalIsOpen(true);
@@ -88,7 +132,7 @@ function App() {
 
       setModalIsOpen(false);
     },
-    [userPlaces]
+    [userPlaces, setUserPlaces]
   );
 
   function handleError() {
@@ -135,7 +179,9 @@ function App() {
           />
         )}
 
-        <AvailablePlaces onSelectPlace={handleSelectPlace} />
+        <AvailablePlaces 
+          onSelectPlace={handleSelectPlace} 
+        />
       </main>
     </>
   );
