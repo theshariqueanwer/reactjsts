@@ -1,6 +1,17 @@
 const redux = require("redux");
 
 // function counterReducer() {};
+
+// function counterReducer(state= { counter: 0 }, action) {
+//     if(action.action === "INCREMENT") {
+//         return state.counter + 1
+//     }
+//     if(action.action === "DECREMENT") {
+//         return state.counter - 1;
+//     }
+//     return state;
+// }
+
 const counterReducer = (state = { counter: 0 }, action) => {
   // initially it was like this
   //   return {
