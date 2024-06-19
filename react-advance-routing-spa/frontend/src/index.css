@@ -48,3 +48,65 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+main {
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.error {
+  font-size: 72px;
+  color: red;
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.error-action {
+  text-align: center;
+  padding: auto;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #1f1d1b;
+  background-color: yellow;
+}
+
+.button {
+  background-color: #30ee0a;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+}
+
+.action-button {
+  background-color: #ee0a0a;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: none;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  margin: 4px;
+  cursor: pointer;
+}
