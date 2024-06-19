@@ -31,13 +31,13 @@ function NewEventPage() {
       <EventForm method="post" />
 
       <button style={{ margin: "1rem" }} onClick={() => navigate("/")}>
-        Go Home
+        Go to Home
       </button>
       <button style={{ margin: "1rem" }} onClick={createEventHandle}>
         Create Event
       </button>
       <button style={{ margin: "1rem" }} onClick={() => navigate("/events")}>
-        Go Back
+        Back to Event
       </button>
     </>
   );
