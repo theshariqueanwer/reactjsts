@@ -1,0 +1,43 @@
+.header {
+  max-width: 60rem;
+  margin: auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list {
+  display: flex;
+  gap: 1rem;
+}
+
+.list a {
+  text-decoration: none;
+  color: var(--color-primary-400);
+}
+
+.list a:hover,
+.list a.active {
+  color: var(--color-primary-800);
+}
+
+.button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: var(--color-primary-400);
+  font-size: 16px;
+  line-height: 24px;
+  box-shadow: rgba(0, 0, 0, 0);
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.list button {
+  text-decoration: none;
+  color: var(--color-primary-400);
+}
+
+.list button:hover,
+.list button.active {
+  color: var(--color-primary-800);
+}
