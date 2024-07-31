@@ -1,10 +1,14 @@
-export default function LoadingIndicator() {
+export default function LoadingIndicator({text}) {
   return (
-    <div className="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+    <>
+      {/* <div><h2>Events are Loading...</h2></div> */}
+      <div><h2>{text}</h2></div>
+      <div className="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </>
   );
 }
